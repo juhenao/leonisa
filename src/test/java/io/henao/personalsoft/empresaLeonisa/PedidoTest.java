@@ -19,9 +19,9 @@ public class PedidoTest {
 
     @Before
     public void setup(){
-        pedidoLeonisa = new Pedido(2, "Hola", 0, 0);
-        pedidoLeo = new Pedido(3, "null", 0, 0);
-        pedidoTeen = new Pedido(2, "null", 0, 0);
+        pedidoLeonisa = new Pedido(2, "Pronto pago", 0.2, 10);
+        pedidoLeo = new Pedido(3, "Pago efectivo", 0.4, 10);
+        pedidoTeen = new Pedido(2, "Pago efectivo", 0.4, 2);
         leonisa = new Leonisa("AFF001", 35000, "Faja", "S", "Negro", "Algodón");
         leo = new Leo("AFC001", 15000, "Camisilla", "S", "Blanco", "Algodón");
         teen = new Teen("AFB003", 25000, "Bra", "34C", "Morado", "Algodón");
@@ -35,7 +35,6 @@ public class PedidoTest {
     public void asignarProductoLeonisaTest(){
         boolean asignadoLeonisa = producto.contains(leonisa);
         Assert.assertTrue("No se ha asignado un producto 'Leonisa' al pedido", asignadoLeonisa);
-        // Assert.assertNull("No se ha asignado un prodcuto a Leonisa", pedido.buscarProducto(leonisa.getCiu()));
     }
 
     @Test
