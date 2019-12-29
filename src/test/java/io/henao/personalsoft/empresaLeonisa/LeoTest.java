@@ -14,7 +14,7 @@ public class LeoTest {
 
     @Test
     public void descProntoPagoTest(){
-        Assert.assertEquals("El descuento para Leo en pronto pago no es el esperado", 0.3, leo.descProntoPago(1), 0);
+        Assert.assertEquals("El descuento para Leo en pronto pago no es el esperado", 0.3, leo.descProntoPago(1, "Pronto pago"), 0);
     }
 
     @Test

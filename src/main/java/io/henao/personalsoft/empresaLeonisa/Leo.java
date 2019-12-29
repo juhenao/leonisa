@@ -5,32 +5,38 @@ public class Leo extends Producto implements ProntoPagable, Cashable{
         super(ciu, precio, tipoPrenda, talla, color, material);
     }
 
-    public double descProntoPago(int prontoPago) {
+    public double descProntoPago(int prontoPago, String metodoPago) {
         double descuento = 0;
-        if(prontoPago > 0 && prontoPago <= 2){
-            descuento = (30.0 / 100.0);
-            return descuento;
-        } else if(prontoPago <= 10 && prontoPago > 2){
-            descuento = (20.0 / 100.0);
-            return descuento;
-        } else if(prontoPago > 20){
-            descuento = (10.0 / 100.0);
-            return descuento;
+        double totalDescuento = 0;
+        if(metodoPago == "Pronto pago"){
+            if(prontoPago > 0 && prontoPago <= 2){
+                descuento += (30.0 / 100.0);
+                totalDescuento = descuento;
+            } else if(prontoPago <= 10 && prontoPago > 2){
+                descuento += (20.0 / 100.0);
+                totalDescuento = descuento;
+            } else if(prontoPago >= 20){
+                descuento += (10.0 / 100.0);
+                totalDescuento = descuento;
+            }
         }
 
-        return 0;
+        return totalDescuento;
     }
 
     public double descPagoEfectivo(int cantidadUnidad, String metodoPago) {
         double descuento = 0;
+        double totalDescuento = 0;
 
         if(metodoPago == "Pago efectivo"){
-            descuento = (40.0 / 100.0);
+            descuento += (40.0 / 100.0);
+            totalDescuento = descuento;
         }
         if(cantidadUnidad >= 10){
-            descuento = descuento + (10.0 / 100.0);
+            descuento += (10.0 / 100.0);
+            totalDescuento = descuento;
         }
 
-        return descuento;
+        return totalDescuento;
     }
 }

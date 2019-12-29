@@ -7,10 +7,12 @@ public class Teen extends Producto implements Cashable{
 
     public double descPagoEfectivo(int cantidadUnidad, String medioPago){
         double descuento = 0;
+        double totalDescuento = 0;
         if(medioPago == "Pago efectivo"){
-            descuento = (40.0 / 100.0);
+            descuento += (40.0 / 100.0);
+            totalDescuento = descuento;
         }
 
-        return descuento;
+        return totalDescuento;
     }
 }
