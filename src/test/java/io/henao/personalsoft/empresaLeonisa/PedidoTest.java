@@ -8,7 +8,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class PedidoTest {
-    private Pedido pedido;
+    private Pedido pedidoLeonisa;
+    private Pedido pedidoLeo;
+    private Pedido pedidoTeen;
     private Leonisa leonisa;
     private Leo leo;
     private Teen teen;
@@ -17,7 +19,9 @@ public class PedidoTest {
 
     @Before
     public void setup(){
-        pedido = new Pedido();
+        pedidoLeonisa = new Pedido(2, "Hola", 0, 0);
+        pedidoLeo = new Pedido(3, "null", 0, 0);
+        pedidoTeen = new Pedido(2, "null", 0, 0);
         leonisa = new Leonisa("AFF001", 35000, "Faja", "S", "Negro", "Algodón");
         leo = new Leo("AFC001", 15000, "Camisilla", "S", "Blanco", "Algodón");
         teen = new Teen("AFB003", 25000, "Bra", "34C", "Morado", "Algodón");
@@ -31,6 +35,7 @@ public class PedidoTest {
     public void asignarProductoLeonisaTest(){
         boolean asignadoLeonisa = producto.contains(leonisa);
         Assert.assertTrue("No se ha asignado un producto 'Leonisa' al pedido", asignadoLeonisa);
+        // Assert.assertNull("No se ha asignado un prodcuto a Leonisa", pedido.buscarProducto(leonisa.getCiu()));
     }
 
     @Test
@@ -43,5 +48,20 @@ public class PedidoTest {
     public void asignarProductoTeenTest(){
         boolean asignadoTeen = producto.contains(teen);
         Assert.assertTrue("No se ha asignado un producto 'Teen' al pedido", asignadoTeen);
+    }
+
+    @Test
+    public void totalCompraTestLeonisa(){
+        Assert.assertEquals("El total de la compra no es el esperado", 70000, pedidoLeonisa.totalCompra(leonisa.getPrecio()), 0);
+    }
+
+    @Test
+    public void totalCompraTestLeo(){
+        Assert.assertEquals("El total de la compra no es el esperado", 45000, pedidoLeo.totalCompra(leo.getPrecio()), 0);
+    }
+
+    @Test
+    public void totalCompraTestTeen(){
+        Assert.assertEquals("El total de la compra no es el esperado", 50000, pedidoTeen.totalCompra(teen.getPrecio()), 0);
     }
 }
